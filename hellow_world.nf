@@ -5,12 +5,10 @@ nextflow.enable.dsl=2
 params.MSG = ['WORLD','SCOTLAND']
 
 
-log.info /
+log.info """
 
       params.MSG
-
-
-/
+ """.stripIndent()
 
 
 process HW {
