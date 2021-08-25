@@ -1,6 +1,17 @@
 nextflow.enable.dsl=2
 
+
+
 params.MSG = ['WORLD','SCOTLAND']
+
+
+log.info /
+
+      params.MSG
+
+
+/
+
 
 process HW {
 
