@@ -4,12 +4,19 @@ MSG = ['WORLD','SCOTLAND']
 
 process HW {
 
+label("HW")
+tag("HW $msg")
+cpus 2
+
 input:
 val msg
 
+output:
+path "message.txt"
+
 script:
 """
-echo HELLO $msg
+echo HELLO $msg > message.txt
 """
 
 }
