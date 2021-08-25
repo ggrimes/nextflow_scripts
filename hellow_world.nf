@@ -7,7 +7,7 @@ params.MSG = ['WORLD','SCOTLAND']
 
 log.info """
 
-      params.MSG
+      MSG:  ${params.MSG}
  """.stripIndent()
 
 
