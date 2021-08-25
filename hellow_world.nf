@@ -2,7 +2,9 @@ nextflow.enable.dsl=2
 
 
 
-params.MSG = ['WORLD','SCOTLAND']
+params.MSG = 'WORLD'
+
+
 
 
 log.info """
@@ -43,7 +45,7 @@ wc -l $myfile
 
 }
 
-ch = Channel.fromList(params.MSG)
+ch = Channel.fromList(params.MSG.tokenize(' '))
 
 workflow {
 
