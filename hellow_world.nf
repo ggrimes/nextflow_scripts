@@ -1,30 +1,43 @@
 nextflow.enable.dsl=2
 
-MSG = ['WORLD','SCOTLAND']
+params.MSG = ['WORLD','SCOTLAND']
 
 process HW {
 
 label("HW")
+publishDir("results")
 tag("HW $msg")
 cpus 2
 
-input:
-val msg
+  input:
+    val msg
 
-output:
-path "message.txt"
+  output:
+    path "message.txt"
+
+  script:
+  """
+  echo HELLO $msg > message.txt
+  """
+}
+
+process WC {
+echo(true)
+
+input:
+path myfile
 
 script:
 """
-echo HELLO $msg > message.txt
+wc -l $myfile
 """
 
 }
 
-ch = Channel.fromList(MSG)
+ch = Channel.fromList(params.MSG)
 
 workflow {
 
-HW(ch)
+WC(HW(ch))
 
 }
